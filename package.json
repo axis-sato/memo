@@ -9,7 +9,7 @@
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write ./src",
-    "lint": "eslint ./src --ext ts --ext tsx --ext js",
+    "lint": "eslint ./src --ext ts,tsx,js,jsx",
     "fix": "run-p lint format",
     "test": "jest",
     "test-all": "yarn lint && yarn type-check && yarn test"
@@ -21,8 +21,10 @@
     }
   },
   "lint-staged": {
-    "./src/**.@(ts|js)?(x)": [
-      "yarn fix"
+    "./src/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
     ]
   },
   "dependencies": {
