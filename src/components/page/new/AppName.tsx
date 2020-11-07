@@ -1,5 +1,5 @@
 const AppName = () => {
-  return <>Memo</>;
+  return <div>{process.env.AppName}</div>;
 };
 
 export default AppName;
