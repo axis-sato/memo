@@ -1,10 +1,13 @@
+import { useFormContext } from "react-hook-form";
 import Input from "../../common/Input";
 
-const TitleInput = () => {
+const TitleInput: React.FC = () => {
+  const methods = useFormContext();
+
   return (
     <div>
       Title:
-      <Input name="text" />
+      <Input name="title" ref={methods.register} />
     </div>
   );
 };

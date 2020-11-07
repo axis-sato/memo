@@ -2,18 +2,9 @@ import React, { InputHTMLAttributes } from "react";
 
 const Input: React.ForwardRefRenderFunction<
   HTMLInputElement,
-  InputHTMLAttributes<HTMLInputElement> & {
-    errorMessage?: string;
-  }
-> = ({ type = "text", errorMessage, ...rest }, ref) => {
-  return (
-    <label className={errorMessage ? "error" : ""}>
-      <input type={type} {...rest} ref={ref} />
-      {errorMessage ? (
-        <p className="error_message overline">{errorMessage}</p>
-      ) : null}
-    </label>
-  );
+  InputHTMLAttributes<HTMLInputElement>
+> = ({ name, ...rest }, ref) => {
+  return <input name={name} ref={ref} {...rest} />;
 };
 
 export default React.forwardRef(Input);
