@@ -7,7 +7,11 @@ const TitleInput: React.FC = () => {
   return (
     <div>
       Title:
-      <Input name="title" ref={methods.register} />
+      <Input
+        name="title"
+        ref={methods.register({ required: "タイトルを入力してください。" })}
+      />
+      {methods.errors.title?.message}
     </div>
   );
 };

@@ -13,7 +13,12 @@ const BodyInput: React.FC<TextareaHTMLAttributes<HTMLTextAreaElement>> = ({
   return (
     <div>
       Body:
-      <textarea name="body" ref={methods.register} {...rest}></textarea>
+      <textarea
+        name="body"
+        ref={methods.register({ required: "本文を入力してください。" })}
+        {...rest}
+      ></textarea>
+      {methods.errors.body?.message}
       <ReactMarkdown plugins={[gfm]} renderers={{ code: CodeBlock }}>
         {body}
       </ReactMarkdown>
