@@ -6,6 +6,7 @@ import AppName from "../components/page/new/AppName";
 import BodyInput from "../components/page/new/BodyInput";
 import TagInput from "../components/page/new/TagInput";
 import TitleInput from "../components/page/new/TitleInput";
+import { useCreateMemo } from "../components/page/new/useCreateMemo";
 
 interface Input {
   title: string;
@@ -15,7 +16,12 @@ interface Input {
 
 const New: NextPage = () => {
   const methods = useForm<Input>();
-  const onSubmit = (data: Input) => console.log(data);
+  const { createMemo } = useCreateMemo();
+
+  const onSubmit = (data: Input) => {
+    const tags = data.tags.split(",");
+    createMemo({ ...data, tags: tags });
+  };
 
   return (
     <Layout>

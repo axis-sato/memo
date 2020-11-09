@@ -7,7 +7,7 @@ const TagInput: React.FC = () => {
   return (
     <div>
       Tags:
-      <Input name="tag" ref={methods.register} />
+      <Input name="tags" ref={methods.register} />
     </div>
   );
 };
