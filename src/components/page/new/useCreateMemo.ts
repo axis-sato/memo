@@ -11,6 +11,7 @@ export const useCreateMemo = () => {
       batch.set(memoRef, {
         title: data.title,
         body: data.body,
+        tags: data.tags,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
       });

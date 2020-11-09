@@ -1,8 +1,6 @@
 import React, { TextareaHTMLAttributes } from "react";
 import { useFormContext } from "react-hook-form";
-import ReactMarkdown from "react-markdown";
-import CodeBlock from "../../common/CodeBlock";
-import gfm from "remark-gfm";
+import MarkDown from "../../common/MarkDown";
 
 const BodyInput: React.FC<TextareaHTMLAttributes<HTMLTextAreaElement>> = ({
   ...rest
@@ -19,9 +17,7 @@ const BodyInput: React.FC<TextareaHTMLAttributes<HTMLTextAreaElement>> = ({
         {...rest}
       ></textarea>
       {methods.errors.body?.message}
-      <ReactMarkdown plugins={[gfm]} renderers={{ code: CodeBlock }}>
-        {body}
-      </ReactMarkdown>
+      <MarkDown>{body}</MarkDown>
     </div>
   );
 };
