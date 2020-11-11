@@ -1,6 +1,17 @@
 @tailwind base;
 @tailwind components;
-.btn-blue {
-  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+@layer base {
+  h1 {
+    @apply .text-4xl .font-semibold;
+  }
+  h2 {
+    @apply .text-2xl .font-semibold;
+  }
+  h3 {
+    @apply .text-xl .font-medium;
+  }
+  h4 {
+    @apply .text-base .font-medium;
+  }
 }
 @tailwind utilities;
