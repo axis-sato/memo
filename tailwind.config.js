@@ -8,7 +8,12 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      height: () => ({
+        "80vh": "70vh",
+        "screen/2": "50vh",
+      }),
+    },
   },
   variants: {},
   plugins: [],

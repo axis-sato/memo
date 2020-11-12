@@ -12,15 +12,22 @@ const BodyInput: React.FC<TextareaHTMLAttributes<HTMLTextAreaElement>> = ({
   return (
     <div className="mb-4">
       <Label htmlFor="body">Body</Label>
-      <textarea
-        name="body"
-        rows={10}
-        className="resize-none w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none"
-        ref={methods.register({ required: "本文を入力してください。" })}
-        {...rest}
-      ></textarea>
-      {methods.errors.body?.message}
-      <MarkDown>{body}</MarkDown>
+      <div className="flex border rounded-lg h-80vh">
+        <textarea
+          name="body"
+          rows={10}
+          placeholder="本文..."
+          className="resize-x text-gray-700 flex-auto px-3 py-2 w-1/2 h-full"
+          ref={methods.register({ required: "本文を入力してください。" })}
+          {...rest}
+        ></textarea>
+        {methods.errors.body?.message}
+        <div className="flex-auto px-3 py-2 w-1/2 overflow-hidden">
+          <div className="flex-1 overflow-y-scroll h-full">
+            <MarkDown>{body}</MarkDown>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

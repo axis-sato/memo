@@ -10,6 +10,7 @@ const TagInput: React.FC = () => {
       <Label htmlFor="tags">Tags</Label>
       <Input
         name="tags"
+        placeholder="js,typescript"
         className="w-full border bg-white rounded px-3 py-2 outline-none text-gray-700"
         ref={methods.register}
       />
