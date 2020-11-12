@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { routes } from "../../../utils/routes";
+import Button from "../../common/Button";
 
 const CreateMemoButton: React.FC = () => {
   return (
     <Link href={routes.new} passHref>
-      <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4">
-        Create a Memo!
-      </button>
+      <Button className="btn btn-green">Create a Memo!</Button>
     </Link>
   );
 };

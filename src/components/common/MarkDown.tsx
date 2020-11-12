@@ -4,7 +4,11 @@ import gfm from "remark-gfm";
 
 const MarkDown: React.FC<{ children: string }> = ({ children }) => {
   return (
-    <ReactMarkdown plugins={[gfm]} renderers={{ code: CodeBlock }}>
+    <ReactMarkdown
+      className="markdown"
+      plugins={[gfm]}
+      renderers={{ code: CodeBlock }}
+    >
       {children}
     </ReactMarkdown>
   );
