@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { db } from "../../../lib/firebase";
 import firebase from "firebase/app";
+import { FetchMemosError } from "./error";
 
 export type Memo = {
   id: string;
@@ -14,6 +15,7 @@ const limit = 2;
 export const useFetchMemos = () => {
   const [memos, setMemos] = useState<Memo[]>([]);
   const [hasMore, setHasMore] = useState<boolean>(true);
+  const [error, setError] = useState<FetchMemosError | null>(null);
   const lastMemo = useRef<firebase.firestore.QueryDocumentSnapshot<
     firebase.firestore.DocumentData
   > | null>(null);
@@ -23,10 +25,8 @@ export const useFetchMemos = () => {
   }, []);
 
   const fetchMemos = useCallback(async () => {
-    await (async (msec: number) =>
-      new Promise((resolve) => setTimeout(resolve, msec)))(2000);
+    setError(null);
 
-    // TODO: エラーハンドリング
     const query = lastMemo.current
       ? db
           .collection("memos")
@@ -35,24 +35,29 @@ export const useFetchMemos = () => {
           .limit(limit)
       : db.collection("memos").orderBy("createdAt", "desc").limit(limit);
 
-    const memosSnapshot = await query.get();
-    lastMemo.current = memosSnapshot.docs[memosSnapshot.docs.length - 1];
-    changeHasMore(memosSnapshot.docs.length);
-    const newMemos: Memo[] = [];
-    memosSnapshot.forEach((memo) => {
-      newMemos.push({
-        id: memo.id,
-        title: memo.data().title,
-        body: memo.data().body,
-        tags: memo.data().tags,
+    try {
+      const memosSnapshot = await query.get();
+      lastMemo.current = memosSnapshot.docs[memosSnapshot.docs.length - 1];
+      changeHasMore(memosSnapshot.docs.length);
+      const newMemos: Memo[] = [];
+      memosSnapshot.forEach((memo) => {
+        newMemos.push({
+          id: memo.id,
+          title: memo.data().title,
+          body: memo.data().body,
+          tags: memo.data().tags,
+        });
       });
-    });
-    setMemos((oldMemos) => [...oldMemos, ...newMemos]);
+      setMemos((oldMemos) => [...oldMemos, ...newMemos]);
+    } catch (e) {
+      setHasMore(false);
+      setError(new FetchMemosError());
+    }
   }, [changeHasMore]);
 
   useEffect(() => {
     fetchMemos();
   }, [fetchMemos]);
 
-  return { memos, fetchMemos, hasMore };
+  return { memos, fetchMemos, hasMore, error };
 };

@@ -4,9 +4,10 @@ import CreateMemoButton from "../components/page/home/CreateMemoButton";
 import { useFetchMemos } from "../components/page/home/fetchMemos";
 import Memo from "../components/page/home/Memo";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Refetch from "../components/page/home/Refetch";
 
 const Home: NextPage = () => {
-  const { memos, fetchMemos, hasMore } = useFetchMemos();
+  const { memos, fetchMemos, hasMore, error } = useFetchMemos();
   return (
     <Layout>
       <CreateMemoButton />
@@ -20,6 +21,7 @@ const Home: NextPage = () => {
           <Memo key={memo.id} memo={memo} />
         ))}
       </InfiniteScroll>
+      {error !== null ? <Refetch refetch={fetchMemos} /> : null}
     </Layout>
   );
 };
