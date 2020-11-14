@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import Layout from "../components/layout/Layout";
 import CreateMemoButton from "../components/page/home/CreateMemoButton";
-import { useFetchMemos } from "../components/page/home/fetchMemos";
+import { useFetchMemos } from "../components/page/home/useFetchMemos";
 import Memo from "../components/page/home/Memo";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Refetch from "../components/page/home/Refetch";

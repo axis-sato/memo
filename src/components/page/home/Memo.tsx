@@ -1,5 +1,5 @@
 import MarkDown from "../../common/MarkDown";
-import { Memo as MemoType } from "./fetchMemos";
+import { Memo as MemoType } from "./useFetchMemos";
 import Title from "./Title";
 import Tag from "./Tag";
 
