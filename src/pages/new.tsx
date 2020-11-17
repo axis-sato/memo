@@ -9,6 +9,7 @@ import TitleInput from "../components/page/new/TitleInput";
 import { useCreateMemo } from "../components/page/new/useCreateMemo";
 import { useRouter } from "next/router";
 import { routes } from "../utils/routes";
+import ErrorToast from "../components/common/ErrorToast";
 
 interface Input {
   title: string;
@@ -18,30 +19,34 @@ interface Input {
 
 const New: NextPage = () => {
   const methods = useForm<Input>();
-  const { createMemo } = useCreateMemo();
+  const { createMemo, error } = useCreateMemo();
   const router = useRouter();
 
-  const onSubmit = (data: Input) => {
+  const onSubmit = async (data: Input) => {
     const tags = data.tags.split(",");
-    createMemo({ ...data, tags: tags });
-    router.push(routes.home);
+    const result = await createMemo({ ...data, tags: tags });
+    if (result) {
+      router.push(routes.home);
+    }
   };
 
   return (
     <Layout>
-      <form onSubmit={methods.handleSubmit(onSubmit)}>
-        <FormProvider {...methods}>
-          <TitleInput />
-          <TagInput />
-          <BodyInput />
-        </FormProvider>
-        <Button type="submit" className="btn btn-green">
-          Save
-        </Button>
-        <Link href={routes.home} passHref>
-          <Button className="btn btn-cancel">Cancel</Button>
-        </Link>
-      </form>
+      <ErrorToast error={error}>
+        <form onSubmit={methods.handleSubmit(onSubmit)}>
+          <FormProvider {...methods}>
+            <TitleInput />
+            <TagInput />
+            <BodyInput />
+          </FormProvider>
+          <Button type="submit" className="btn btn-green">
+            Save
+          </Button>
+          <Link href={routes.home} passHref>
+            <Button className="btn btn-cancel">Cancel</Button>
+          </Link>
+        </form>
+      </ErrorToast>
     </Layout>
   );
 };
