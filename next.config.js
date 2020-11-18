@@ -2,9 +2,12 @@ require("dotenv").config({ debug: process.env.DEBUG });
 
 module.exports = {
   env: {
-    AppName: process.env.AppName || "Memo",
-    FBAPIKey: process.env.FBAPIKey,
-    FBAuthDomain: process.env.FBAuthDomain,
-    FBProjectID: process.env.FBProjectID,
+    APP_NAME: process.env.APP_NAME || "Memo",
+    FB_API_KEY: process.env.FB_API_KEY,
+    FB_AUTH_DOMAIN: process.env.FB_AUTH_DOMAIN,
+    FB_DATABASE_URL: process.env.FB_DATABASE_URL,
+    FB_STORAGE_BUCKET: process.env.FB_STORAGE_BUCKET,
+    FB_MESSAGING_SENDER_ID: process.env.FB_MESSAGING_SENDER_ID,
+    FB_PROJECT_ID: process.env.FB_PROJECT_ID,
   },
 };

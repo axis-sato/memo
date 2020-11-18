@@ -1,5 +1,5 @@
 const AppName = () => {
-  return <div>{process.env.AppName}</div>;
+  return <div>{process.env.APP_NAME}</div>;
 };
 
 export default AppName;
