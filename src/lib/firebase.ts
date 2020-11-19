@@ -1,8 +1,9 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
+import "firebase/auth";
 
 const config = {
-  apiKey: process.env.FBAPIKey,
+  apiKey: process.env.FB_API_KEY,
   authDomain: process.env.FB_AUTH_DOMAIN,
   databaseURL: process.env.FB_DATABASE_URL,
   projectId: process.env.FB_PROJECT_ID,
@@ -16,3 +17,5 @@ if (!firebase.apps.length) {
 }
 
 export const db = firebase.firestore();
+
+export default firebase;
