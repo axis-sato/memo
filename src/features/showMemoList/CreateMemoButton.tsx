@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { routes } from "../../../utils/routes";
-import Button from "../../common/Button";
+import { routes } from "../../utils/routes";
+import Button from "../../components/Button";
 
 const CreateMemoButton: React.FC = () => {
   return (

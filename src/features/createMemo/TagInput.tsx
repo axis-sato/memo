@@ -1,5 +1,5 @@
 import { useFormContext } from "react-hook-form";
-import Input from "../../common/Input";
+import Input from "../../components/Input";
 import Label from "./Label";
 
 const TagInput: React.FC = () => {

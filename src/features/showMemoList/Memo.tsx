@@ -1,4 +1,4 @@
-import MarkDown from "../../common/MarkDown";
+import MarkDown from "../../components/MarkDown";
 import { Memo as MemoType } from "./useFetchMemos";
 import Title from "./Title";
 import Tag from "./Tag";

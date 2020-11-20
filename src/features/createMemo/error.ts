@@ -1,3 +1,3 @@
-import { BaseError } from "../../../utils/error";
+import { BaseError } from "../../utils/error";
 
 export class CreateMemosError extends BaseError {}

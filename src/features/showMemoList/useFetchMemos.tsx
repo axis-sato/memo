@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { db } from "../../../lib/firebase";
+import { db } from "../../utils/firebase";
 import firebase from "firebase/app";
 import { FetchMemosError } from "./error";
 

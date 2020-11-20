@@ -1,10 +1,10 @@
 import { NextPage } from "next";
 import Layout from "../components/layout/Layout";
-import CreateMemoButton from "../components/page/home/CreateMemoButton";
-import { useFetchMemos } from "../components/page/home/useFetchMemos";
-import Memo from "../components/page/home/Memo";
+import CreateMemoButton from "../features/showMemoList/CreateMemoButton";
+import { useFetchMemos } from "../features/showMemoList/useFetchMemos";
+import Memo from "../features/showMemoList/Memo";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Refetch from "../components/page/home/Refetch";
+import Refetch from "../features/showMemoList/Refetch";
 
 const Home: NextPage = () => {
   const { memos, fetchMemos, hasMore, error } = useFetchMemos();

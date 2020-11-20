@@ -1,6 +1,6 @@
 import React, { TextareaHTMLAttributes } from "react";
 import { useFormContext } from "react-hook-form";
-import MarkDown from "../../common/MarkDown";
+import MarkDown from "../../components/MarkDown";
 import Label from "./Label";
 
 const BodyInput: React.FC<TextareaHTMLAttributes<HTMLTextAreaElement>> = ({

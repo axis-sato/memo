@@ -1,5 +1,5 @@
 import ReactMarkdown from "react-markdown";
-import CodeBlock from "../common/CodeBlock";
+import CodeBlock from "./CodeBlock";
 import gfm from "remark-gfm";
 
 const MarkDown: React.FC<{ children: string }> = ({ children }) => {

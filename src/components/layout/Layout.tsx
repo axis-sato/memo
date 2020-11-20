@@ -1,5 +1,5 @@
 import Head from "next/head";
-import AppName from "../common/AppName";
+import AppName from "../AppName";
 
 const Layout: React.FC<{ title?: string }> = ({ children, title = "memo" }) => {
   return (

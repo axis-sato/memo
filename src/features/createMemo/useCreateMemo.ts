@@ -1,6 +1,6 @@
 import firebase from "firebase";
 import { useCallback, useState } from "react";
-import { db } from "../../../lib/firebase";
+import { db } from "../../utils/firebase";
 import { CreateMemosError } from "./error";
 
 export const useCreateMemo = () => {

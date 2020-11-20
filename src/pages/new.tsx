@@ -1,15 +1,15 @@
 import { NextPage } from "next";
 import Link from "next/link";
 import { FormProvider, useForm } from "react-hook-form";
-import Button from "../components/common/Button";
+import Button from "../components/Button";
 import Layout from "../components/layout/Layout";
-import BodyInput from "../components/page/new/BodyInput";
-import TagInput from "../components/page/new/TagInput";
-import TitleInput from "../components/page/new/TitleInput";
-import { useCreateMemo } from "../components/page/new/useCreateMemo";
+import BodyInput from "../features/createMemo/BodyInput";
+import TagInput from "../features/createMemo/TagInput";
+import TitleInput from "../features/createMemo/TitleInput";
+import { useCreateMemo } from "../features/createMemo/useCreateMemo";
 import { useRouter } from "next/router";
 import { routes } from "../utils/routes";
-import ErrorToast from "../components/common/ErrorToast";
+import ErrorToast from "../components/ErrorToast";
 
 interface Input {
   title: string;
