@@ -48,6 +48,7 @@
         "argsIgnorePattern": "^_"
       }
     ],
-    "@typescript-eslint/explicit-module-boundary-types": 0
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "import/no-named-as-default-member": 0
   }
 }
