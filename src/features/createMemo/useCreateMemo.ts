@@ -4,7 +4,7 @@ import { db } from "../../utils/firebase";
 import { CreateMemosError } from "./error";
 
 export const useCreateMemo = () => {
-  const [error, setError] = useState<CreateMemosError | null>(null);
+  const [error, setError] = useState<CreateMemosError | undefined>(undefined);
 
   const createMemo = useCallback(
     async (data: {

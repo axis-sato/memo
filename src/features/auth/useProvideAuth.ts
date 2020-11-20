@@ -18,7 +18,7 @@ export const useProvideAuth = (): AuthType => {
     return await auth.signOut();
   };
 
-  useEffect(() => {
+  useEffect((): (() => void) => {
     const unsubscribe = auth.onAuthStateChanged((user) => setCurrentUser(user));
     return () => unsubscribe;
   }, []);
