@@ -10,6 +10,7 @@ import { useCreateMemo } from "../features/createMemo/useCreateMemo";
 import { useRouter } from "next/router";
 import { routes } from "../utils/routes";
 import ErrorToast from "../components/ErrorToast";
+import Private from "../features/auth/Private";
 
 interface Input {
   title: string;
@@ -31,23 +32,25 @@ const New: NextPage = () => {
   };
 
   return (
-    <Layout>
-      <ErrorToast error={error}>
-        <form onSubmit={methods.handleSubmit(onSubmit)}>
-          <FormProvider {...methods}>
-            <TitleInput />
-            <TagInput />
-            <BodyInput />
-          </FormProvider>
-          <Button type="submit" className="btn btn-green">
-            Save
-          </Button>
-          <Link href={routes.home} passHref>
-            <Button className="btn btn-cancel">Cancel</Button>
-          </Link>
-        </form>
-      </ErrorToast>
-    </Layout>
+    <Private>
+      <Layout>
+        <ErrorToast error={error}>
+          <form onSubmit={methods.handleSubmit(onSubmit)}>
+            <FormProvider {...methods}>
+              <TitleInput />
+              <TagInput />
+              <BodyInput />
+            </FormProvider>
+            <Button type="submit" className="btn btn-green">
+              Save
+            </Button>
+            <Link href={routes.home} passHref>
+              <Button className="btn btn-cancel">Cancel</Button>
+            </Link>
+          </form>
+        </ErrorToast>
+      </Layout>
+    </Private>
   );
 };
 
