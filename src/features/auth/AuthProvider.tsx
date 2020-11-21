@@ -5,7 +5,11 @@ export const authContext = createContext<AuthType>({} as AuthType);
 
 const AuthProvider: React.FC = ({ children }) => {
   const auth = useProvideAuth();
-  return <authContext.Provider value={auth}>{children}</authContext.Provider>;
+  return (
+    <authContext.Provider value={auth}>
+      {!auth.loading && children}
+    </authContext.Provider>
+  );
 };
 
 export default AuthProvider;

@@ -2,13 +2,15 @@ import firebase, { auth } from "../../utils/firebase";
 import { useEffect, useState } from "react";
 
 export type AuthType = {
-  user: firebase.User | null;
+  currentUser: firebase.User | null;
   signinWithGoogle: () => Promise<void>;
   signout: () => Promise<void>;
+  loading: boolean;
 };
 
 export const useProvideAuth = (): AuthType => {
   const [currentUser, setCurrentUser] = useState<firebase.User | null>(null);
+  const [loading, setLoading] = useState(true);
 
   const signinWithGoogle = async (): Promise<void> => {
     await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
@@ -19,9 +21,12 @@ export const useProvideAuth = (): AuthType => {
   };
 
   useEffect((): (() => void) => {
-    const unsubscribe = auth.onAuthStateChanged((user) => setCurrentUser(user));
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
+      setLoading(false);
+    });
     return () => unsubscribe;
   }, []);
 
-  return { user: currentUser, signinWithGoogle, signout };
+  return { currentUser, signinWithGoogle, signout, loading };
 };

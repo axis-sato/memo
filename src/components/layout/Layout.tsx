@@ -1,5 +1,6 @@
 import Head from "next/head";
-import AppName from "../AppName";
+import React from "react";
+import Header from "../Header";
 
 const Layout: React.FC<{ title?: string }> = ({ children, title = "memo" }) => {
   return (
@@ -7,7 +8,7 @@ const Layout: React.FC<{ title?: string }> = ({ children, title = "memo" }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <AppName />
+      <Header />
       <div>{children}</div>
     </>
   );

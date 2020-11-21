@@ -5,24 +5,27 @@ import { useFetchMemos } from "../features/showMemoList/useFetchMemos";
 import Memo from "../features/showMemoList/Memo";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Refetch from "../features/showMemoList/Refetch";
+import Private from "../features/auth/Private";
 
 const Home: NextPage = () => {
   const { memos, fetchMemos, hasMore, error } = useFetchMemos();
   return (
-    <Layout>
-      <CreateMemoButton />
-      <InfiniteScroll
-        dataLength={memos.length}
-        next={fetchMemos}
-        hasMore={hasMore}
-        loader={<>loading...</>}
-      >
-        {memos.map((memo) => (
-          <Memo key={memo.id} memo={memo} />
-        ))}
-      </InfiniteScroll>
-      {error !== null ? <Refetch refetch={fetchMemos} /> : null}
-    </Layout>
+    <Private>
+      <Layout>
+        <CreateMemoButton />
+        <InfiniteScroll
+          dataLength={memos.length}
+          next={fetchMemos}
+          hasMore={hasMore}
+          loader={<>loading...</>}
+        >
+          {memos.map((memo) => (
+            <Memo key={memo.id} memo={memo} />
+          ))}
+        </InfiniteScroll>
+        {error !== null ? <Refetch refetch={fetchMemos} /> : null}
+      </Layout>
+    </Private>
   );
 };
 
