@@ -16,9 +16,9 @@ export const useFetchMemos = () => {
   const [memos, setMemos] = useState<Memo[]>([]);
   const [hasMore, setHasMore] = useState<boolean>(true);
   const [error, setError] = useState<FetchMemosError | null>(null);
-  const lastMemo = useRef<firebase.firestore.QueryDocumentSnapshot<
-    firebase.firestore.DocumentData
-  > | null>(null);
+  const lastMemo = useRef<firebase.firestore.QueryDocumentSnapshot<firebase.firestore.DocumentData> | null>(
+    null
+  );
 
   const changeHasMore = useCallback((newMemosCount: number) => {
     setHasMore(newMemosCount !== 0);
