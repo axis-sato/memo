@@ -9,7 +9,7 @@ const config = {
   projectId: process.env.FB_PROJECT_ID,
   storageBucket: process.env.FB_STORAGE_BUCKET,
   messagingSenderId: process.env.FB_MESSAGING_SENDER_ID,
-  appId: process.env.FB_PROJECT_ID,
+  appId: process.env.FB_APP_ID,
 };
 
 if (!firebase.apps.length) {
